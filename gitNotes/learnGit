@@ -1,0 +1,100 @@
+git - Distributed Version Control System.
+###############################################################################
+Install git on ubuntu:
+=>  With Apt by using default repositories of ubuntu: You can use the apt package management tools to update your local package index.
+    Afterwards, you can download and install the program:
+    $ sudo apt-get update
+    $ sudo apt-get install git
+
+=>  From Source: It will allow you to download the latest release and will give you some control over the options you include if you wish to customize.
+    Install the software that git depends on. This is all available in the default repositories.
+    $ sudo apt-get update
+    $ sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
+
+    Visit https://github.com/git/git
+    Goto >> Branch >> tags >> select latest stable release(non 'rc').
+    Get link of download zip. e.g. https://github.com/git/git/archive/v2.11.0.zip (Click on download zip and copy the link).
+
+    Back on your Ubuntu server:
+    wget https://github.com/git/git/archive/v2.11.0.zip
+
+    Unzip the file and move into the resulting directory:
+    unzip v.2.11.0.zip
+    cd git-*
+
+    Now, you can make the package and install it:
+    sudo apt-get install autoconf
+    make configure
+    ./configure --prefix=/usr/local
+
+    make prefix=/usr/local all
+    sudo make prefix=/usr/local install
+
+    These commands may ask to install dependencies:
+    e.g.
+    sudo apt-get install libssl-dev
+    sudo apt-get -f install
+    sudo apt-get install libcurl4-gnutls-dev
+    sudo apt-get install expat
+
+    git is installed. (It will be installed in '/usr/local/bin'. Your '/usr/bin may' also contain git with same or different version)
+
+###############################################################################
+
+Know your git version.
+    $ git --version
+
+Git commands to know.
+    $ git status -s[status in short form]/
+    $ git add
+How to setup git.
+    git embeds this information into each commit.
+    $ git config --global user.name "sanchay"
+    $ git config --global user.email "sanchay.2k9@gmail.com"
+
+Check and edit config file.
+    $ git config --list
+    $ gvim ~/.gitconfig
+
+Syncing with online github repository.
+    Creating a local repository and Pushing files in local repository to GitHub repository.
+    $ git init work
+    >> Initialized empty Git repository in /home/sanchay/work/git/work/.git/
+    Here work is a GitHub `repository.
+    $ cd work/
+    It also creates a work/.git directory.
+    Now add files in work repository and do all changes. e.g. Add README file.
+    $ git add README # git add files.
+    $ git commit -m "Any message that you want to associate with commit." # commit changes in local repository.
+    Please confirm your ssh key is added to github account.
+    $ git remote add git@github.com:SanchaySaria/work.git # Add local repository to Github using ssh. Also can use http.
+    $ git push origin master # push local repository changes to Github repository.
+
+    Getting a Git Repository.
+    Create a clone of git repository using url of repository.
+    $ git clone git@github.com:SanchaySaria/projects.git # Create clone of Github repository.
+    $ git clone git@github.com:SanchaySaria/projects.git myProjects # Local repository name can be different from Github repository.
+
+Generate and add ssh key to github account.
+    # If ssh key of machine exists - use it, else generate one.
+    $ ls -al ~/.ssh # If you don't have an existing public and private key pair, or don't wish to use any that are available to connect to GitHub, then generate a new SSH key.
+    $ ssh-keygen -t rsa -b 4096 -C "sanchay.2k9@gmail.com"
+    >> Generating public/private rsa key pair.
+    >> Enter file in which to save the key (/home/sanchay/.ssh/id_rsa): # Press enter for default file name.
+    >> Enter passphrase (empty for no passphrase): # Enter passphrase for extra secure key.
+    >> Enter same passphrase again: # Re-enter passphrase.
+    >> Your identification has been saved in /home/sanchay/.ssh/id_rsa.
+    >> Your public key has been saved in /home/sanchay/.ssh/id_rsa.pub.
+
+    # Add ssh key to ssh-agent.
+    # start the ssh-agent in the background
+    $ eval "$(ssh-agent -s)"
+    >> Agent pid 4114
+    $ ssh-add ~/.ssh/id_rsa
+    Enter passphrase for /home/sanchay/.ssh/id_rsa: # Re-enter passphrase.
+
+    # Add key to Github account.
+    copy key from /home/sanchay/.ssh/id_rsa.pub
+    goto to github account >> settings >> SSH and GPG keys >> Add key.
+
+
