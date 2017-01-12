@@ -45,7 +45,7 @@ Know your git version.
     $ git --version
 
 Git commands to know.
-    $ git status -s[status in short form]/
+    $ git status -s[status in short form]
     $ git add
 How to setup git.
     git embeds this information into each commit.
