@@ -1,0 +1,46 @@
+#!/bin/sh
+
+cond="-e ^FAIL -e ^TIME"
+
+/bin/rm -f .tmp1
+/bin/touch .tmp
+
+cut -d, -f1,3 lnx64.csv | grep -v "^STATUS" | grep $cond | cut -d, -f2 > .tmp1
+
+#first="\/"
+first="\\\/"
+for checkReg in `cat .tmp1`; do
+  checkThis=`echo $checkReg | sed 's/$first/$second/g'`
+  isPresent=`grep -c $checkThis .tmp`
+  if [ $isPresent -eq 0 ] 
+  then
+    echo $checkReg >> .tmp
+  fi
+done
+
+rm -f .tmp1
+
+total=`grep -vc " VerifiedThisOne$" .tmp`
+index=0
+
+for reg in `cat .tmp | grep -v VerifiedThisOne`; do
+  tail -n50 $reg/TEST_WORK_lnx64.OUTPUT | grep -vi batonroot
+  REGRESSION=`echo $reg | sed 's/.*\///g'`
+  sed -i "s/\b$REGRESSION\b/$REGRESSION VerifiedThisOne/g" .tmp
+  let "index+=1"
+  echo "\n---Showing $index of $total--- $reg"
+  echo ""
+  echo ""
+  if [ $index -ne $total ]
+  then
+    read -rsp $'' -n1 key
+  fi
+done
+
+anyMore=`cut -d, -f1 lnx64.csv | grep -v "^STATUS" | grep -c -e RUN -e PEND`
+remainingToBeChecked=`cat .tmp | grep -v VerifiedThisOne`
+anyMore=$((anyMore + remainingToBeChecked))
+if [ $anyMore -eq 0 ]
+then
+  rm -f .tmp
+fi

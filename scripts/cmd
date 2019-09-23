@@ -1,0 +1,2 @@
+rdi regression --failure-rate=100 --level=\[1-6\] --file=./<path>
+

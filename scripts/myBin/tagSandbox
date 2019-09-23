@@ -1,0 +1,106 @@
+#!/bin/sh
+
+COLOR='\033[0;31m'
+NC='\033[0m'
+
+start=`date`
+
+src=`echo $PWD | sed -s 's/Rodin.*//g'`
+src=${src}Rodin/HEAD/src
+
+if [ -d $src ]
+then
+  tmp=`echo $src | sed -s 's/\/Rodin.*//g' | sed -s 's/.*\///g'`
+  echo -e "\nGenerating tags for ${COLOR}$tmp${NC}"
+else
+  echo "\nCan be launch anywhere from sandbox, no other place"
+  exit
+fi
+
+cd $src
+
+#rm -f /wrk/xhdhdnobkup2/rahulg/RDI_rahulg_test/Rodin/HEAD/src/tags*
+#rm -f /proj/xhdhdstaff2/rahulg/RDI_rahulg_code/Rodin/HEAD/src/tags*
+
+if [ $# == 1 ] && [ $1 == "force" ]
+then
+  echo "Rebuilding tags from scratch"
+  rm -f ctags.files cscope.files
+  find shared -name "*.cxx" -o -name "*.h"    -type f   > ctags.files
+  find components -name "*.cxx" -o -name "*.h" -type f >> ctags.files
+  find products -name "*.cxx" -o -name "*.h"  -type f  >> ctags.files
+  #find . -name "*.cpp" -o -name "*.cxx" -o -name "*.c" -o -name "*.h" -o -name "*.hxx" -o -name "*.hpp" -type f > cscope.files
+
+  sed -i 's/^\.\///g'                  ctags.files
+  sed -i '/^ext/d'                     ctags.files
+  sed -i '/^misc/d'                    ctags.files
+  sed -i '/Boost/d'                    ctags.files
+  sed -i '/boost/d'                    ctags.files
+
+  sed -i '/products\/archevaltools/d'  ctags.files
+  sed -i '/products\/ccwrap/d'         ctags.files
+  sed -i '/products\/coverity/d'       ctags.files
+  sed -i '/products\/g2/d'             ctags.files
+  sed -i '/products\/sysgen/d'         ctags.files
+  sed -i '/products\/sdx/d'            ctags.files
+  sed -i '/products\/fourier/d'        ctags.files
+  sed -i '/products\/noc/d'            ctags.files
+  sed -i '/products\/hwserver/d'       ctags.files
+  sed -i '/products\/islprep/d'        ctags.files
+  sed -i '/products\/labtools/d'       ctags.files
+  sed -i '/products\/vivado/d'         ctags.files
+  sed -i '/products\/easypath/d'       ctags.files
+  sed -i '/products\/example/d'        ctags.files
+  sed -i '/products\/impera/d'         ctags.files
+  sed -i '/products\/fpgatest/d'       ctags.files
+  sed -i '/products\/bullseye/d'       ctags.files
+  sed -i '/products\/hsi/d'            ctags.files
+  sed -i '/products\/scw/d'            ctags.files
+  sed -i '/products\/simulator/d'      ctags.files
+  sed -i '/products\/synthesis/d'      ctags.files
+  sed -i '/products\/updatemem/d'      ctags.files
+  sed -i '/products\/vcseserver/d'     ctags.files
+  sed -i '/products\/vlm/d'            ctags.files
+  sed -i '/products\/webtalk/d'        ctags.files
+  sed -i '/products\/xsct/d'           ctags.files
+  sed -i '/products\/sdk/d'            ctags.files
+  sed -i '/products\/sdkide/d'         ctags.files
+
+  cp ctags.files cscope.files
+  rm -f ctags.files
+  touch ctags.files
+
+  grep 'shared\/common'                                     cscope.files >> ctags.files
+  grep 'shared\/coregen'                                    cscope.files >> ctags.files
+  grep 'shared/runs'                                        cscope.files >> ctags.files
+  grep 'shared\/filemgmt'                                   cscope.files >> ctags.files
+  grep 'shared\/netlist'                                    cscope.files >> ctags.files
+  grep 'shared\/designutils\/debugcore'                     cscope.files >> ctags.files
+  grep 'shared\/constraints'                                cscope.files >> ctags.files
+  grep 'shared\/chipscope'                                  cscope.files >> ctags.files
+  grep 'shared\/rsb'                                        cscope.files >> ctags.files
+
+  grep 'components\/project\/project'                       cscope.files >> ctags.files
+  grep 'components\/project\/pprxio'                        cscope.files >> ctags.files
+  grep 'components\/features\/core\/tcltasks'               cscope.files >> ctags.files
+
+  grep 'products\/planAhead\/tcltasks\/run'                 cscope.files >> ctags.files
+  grep 'products\/planAhead\/tcltasks\/design'              cscope.files >> ctags.files
+  grep 'products\/planAhead\/tcltasks\/chipscope'           cscope.files >> ctags.files
+
+  grep 'products\/planAhead\/tcltasks\/property2\/project'  cscope.files >> ctags.files
+  grep 'products\/planAhead\/tcltasks\/property2\/run'      cscope.files >> ctags.files
+  grep 'products\/planAhead\/tcltasks\/property2\/design'   cscope.files >> ctags.files
+  grep 'products\/planAhead\/tcltasks\/property2\/core'     cscope.files >> ctags.files
+
+fi
+
+/usr/bin/ctags -Ru --file-tags -L ctags.files -o newTags
+mv newTags tags
+
+end=`date`
+echo "\ntags created..."
+echo $start; echo $end
+
+#/usr/bin/ctags -Ru --file-tags -L cscope.files -o tagsAll &
+#cscope -b -q -k &
