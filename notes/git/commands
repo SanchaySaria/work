@@ -5,6 +5,9 @@ Know your git version.
 
 Git commands to know.
     $ git status -s[status in short form]
-    $ git add
+    $ git add <file/dir path>
+    $ git rm -r <file/dir path>
+    $ git commit -m <"Comment on commit">
+    $ git push origin master
 
 ###############################################################################
