@@ -10,4 +10,11 @@ Git commands to know.
     $ git commit -m <"Comment on commit">
     $ git push origin master
 
+    $ git fetch
+    $ git merge
+    $ git pull
+    $ git pull --rebase # git config --global branch.autosetuprebase always
+
+
+
 ###############################################################################
