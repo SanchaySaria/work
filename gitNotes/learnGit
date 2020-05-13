@@ -16,37 +16,30 @@ Install git on ubuntu:
     Get link of download zip. e.g. https://github.com/git/git/archive/v2.11.0.zip (Click on download zip and copy the link).
 
     Back on your Ubuntu server:
-    wget https://github.com/git/git/archive/v2.11.0.zip
+    $ wget https://github.com/git/git/archive/v2.11.0.zip
 
     Unzip the file and move into the resulting directory:
-    unzip v.2.11.0.zip
-    cd git-*
+    $ unzip v.2.11.0.zip
+    $ cd git-*
 
     Now, you can make the package and install it:
-    sudo apt-get install autoconf
-    make configure
-    ./configure --prefix=/usr/local
+    $ sudo apt-get install autoconf
+    $ make configure
+    $ ./configure --prefix=/usr/local
 
-    make prefix=/usr/local all
-    sudo make prefix=/usr/local install
+    $ make prefix=/usr/local all
+    $ sudo make prefix=/usr/local install
 
     These commands may ask to install dependencies:
     e.g.
-    sudo apt-get install libssl-dev
-    sudo apt-get -f install
-    sudo apt-get install libcurl4-gnutls-dev
-    sudo apt-get install expat
+    $ sudo apt-get install libssl-dev
+    $ sudo apt-get -f install
+    $ sudo apt-get install libcurl4-gnutls-dev
+    $ sudo apt-get install expat
 
     git is installed. (It will be installed in '/usr/local/bin'. Your '/usr/bin may' also contain git with same or different version)
 
 ###############################################################################
-
-Know your git version.
-    $ git --version
-
-Git commands to know.
-    $ git status -s[status in short form]
-    $ git add
 How to setup git.
     git embeds this information into each commit.
     $ git config --global user.name "sanchay"
@@ -64,7 +57,7 @@ Syncing with online github repository.
     $ cd work/
     It also creates a work/.git directory.
     Now add files in work repository and do all changes. e.g. Add README file.
-    $ git add README # git add files.
+    $ git add README
     $ git commit -m "Any message that you want to associate with commit." # commit changes in local repository.
     Please confirm your ssh key is added to github account.
     $ git remote add git@github.com:SanchaySaria/work.git # Add local repository to Github using ssh. Also can use http.
@@ -94,7 +87,20 @@ Generate and add ssh key to github account.
     Enter passphrase for /home/sanchay/.ssh/id_rsa: # Re-enter passphrase.
 
     # Add key to Github account.
-    copy key from /home/sanchay/.ssh/id_rsa.pub
-    goto to github account >> settings >> SSH and GPG keys >> Add key.
+    Copy key from /home/sanchay/.ssh/id_rsa.pub
+    Goto to github account >> settings >> SSH and GPG keys >> Add key.
+
+
+
+###############################################################################
+Git commands:
+
+    $ git --version # Know your git version
+    $ git status -s[status in short form] # git status wrt your local repo
+    $ git add <space separated file/directory paths> # Add files to git local repo
+    $ git commit -m "Any message that you want to associate with commit." <Mention file names or git will commit all modified files.> # commit changes to local repository
+    $ git push origin master # push local repository changes to Github repository
+    $ git rm <file> # Remove file from git local repo
+    $ git rm --cached <file> # But if you want to remove the file only from the Git repository and not remove it from the file system in use
 
 
