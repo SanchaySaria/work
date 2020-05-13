@@ -1,5 +1,6 @@
 git - Distributed Version Control System.
 ###############################################################################
+<<<<<<< HEAD:gitNotes/learnGit
 Install git on ubuntu:
 =>  With Apt by using default repositories of ubuntu: You can use the apt package management tools to update your local package index.
     Afterwards, you can download and install the program:
@@ -40,6 +41,8 @@ Install git on ubuntu:
     git is installed. (It will be installed in '/usr/local/bin'. Your '/usr/bin may' also contain git with same or different version)
 
 ###############################################################################
+=======
+>>>>>>> 14d22f02b5b8ba2affbbdfd6585db3d8ed4459d4:notes/git/sync_with_repo
 How to setup git.
     git embeds this information into each commit.
     $ git config --global user.name "sanchay"
@@ -103,4 +106,4 @@ Git commands:
     $ git rm <file> # Remove file from git local repo
     $ git rm --cached <file> # But if you want to remove the file only from the Git repository and not remove it from the file system in use
 
-
+###############################################################################

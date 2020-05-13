@@ -1,0 +1,33 @@
+#!/bin/csh
+
+#if ($# != 1) then
+#  echo "one input from list PEND|RUN|FAIL|PASS|EXFL required"
+#  exit 1
+#endif
+
+if ($1 == "PEND" || $1 == "RUN" || $1 == "PASS" || $1 == "INTR" || $1 == "EXFL" || $1 == "FAIL") then
+  echo ""
+else
+  echo "Input can only be from list PEND|RUN|FAIL|PASS|EXFL"
+  exit 1
+endif
+
+set rfile = "lnx64.csv"
+if ($# == 2) then
+  set rfile = "${2}"
+endif
+
+set cond = "^${1}"
+
+set total = `cut -d, -f1,3 $rfile | grep -v "^STATUS" | grep -c $cond`
+set count = 1
+
+foreach reg ( "`cut -d, -f1,3 $rfile | grep -v "^STATUS" | grep $cond | sort | cut -d, -f2`" )
+  clear
+  tail -n50 $reg/TEST_WORK_lnx64.OUTPUT | grep -vi batonroot
+  set at = $count
+  echo "\n---Showing $at of $total--- $reg"
+  @ count = $at + 1
+  set next = $<
+end
+

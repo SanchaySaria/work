@@ -1,0 +1,23 @@
+alias h 'history'
+alias v gvim -p
+alias c clear
+alias so source
+
+alias nobk 'cd /wrk/xhdhdnobkup3/sanchayk ; source ~/.nobk3.csh'
+alias staff 'cd /proj/xhdhdstaff3/sanchayk ; source ~/.staff3.csh'
+
+alias p4v /tools/batonroot/rodin/devkits/lnx24/perforce-2013.2/bin/p4v
+alias crucible /tools/batonroot/rodin/devkits/lnx64/codereview/crucible.py
+alias rdiMerge rdi wall-submit --mergeto=HEAD:Yes --no-submit 
+
+
+alias dmake rdi make debug=yes
+alias omake rdi make
+
+#### cadman ####
+alias cadman 'eval `/tools/xint/prod/bin/cad.pl \!*`'  
+#cadman add -t xilinx -v 2019.1_daily_latest -p ta
+alias cadDl 'set version=\!:1; cadman add -t xilinx -v ${version}_daily_latest -p ta; which vivado | grep $version --color '
+alias cadCont 'set version=\!:1; cadman add -t xilinx -v ${version}_continuous_latest -p ta; which vivado | grep $version --color '
+alias cadInt 'set version=\!:1; cadman add -t xilinx -v ${version}_INT_daily_latest -p ta; which vivado | grep $version --color '
+alias cadSp 'set version=\!:1; cadman add -t xilinx -v ${version} -p ta; which vivado | grep $version --color '
