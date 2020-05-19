@@ -1,7 +1,7 @@
 git - Distributed Version Control System.
 ###############################################################################
 How to setup git.
-    git embeds this information into each commit.
+    # git embeds this information into each commit.
     git config --global user.name "sanchay"
     git config --global user.email "sanchay.2k9@gmail.com"
 
