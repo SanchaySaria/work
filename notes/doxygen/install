@@ -4,4 +4,4 @@ but it also supports other popular programming languages such as C, Objective-C,
 (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
 
 # Install doxygen
-    $ sudo apt install doxygen
+sudo apt install doxygen
