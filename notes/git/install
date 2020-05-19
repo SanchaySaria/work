@@ -3,13 +3,13 @@ git - Distributed Version Control System.
 Install git on ubuntu:
 =>  With Apt by using default repositories of ubuntu: You can use the apt package management tools to update your local package index.
     Afterwards, you can download and install the program:
-    $ sudo apt-get update
-    $ sudo apt-get install git
+    sudo apt-get update
+    sudo apt-get install git
 
 =>  From Source: It will allow you to download the latest release and will give you some control over the options you include if you wish to customize.
     Install the software that git depends on. This is all available in the default repositories.
-    $ sudo apt-get update
-    $ sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
+    sudo apt-get update
+    sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
 
     Visit https://github.com/git/git
     Goto >> Branch >> tags >> select latest stable release(non 'rc').
@@ -40,6 +40,6 @@ Install git on ubuntu:
     git is installed. (It will be installed in '/usr/local/bin'. Your '/usr/bin may' also contain git with same or different version)
 
 Know your git version:
-    $ git --version
+    git --version
 
 ###############################################################################
