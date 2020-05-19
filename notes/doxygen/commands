@@ -1,0 +1,2 @@
+# Create configuartion file for doxygen. (doxyConfig and Modify this file as per requirement)
+doxygen -g doxyConfig
