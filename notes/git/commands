@@ -4,16 +4,17 @@ Know your git version.
     git --version
 
 Git commands to know.
-    git status -s[status in short form]
-    git add <file/dir path>
-    git rm -r <file/dir path>
-    git commit -m <"Comment on commit">
-    git push origin master
+    git --version # Know your git version
+    git status -s[status in short form] # git status wrt your local repo
+    git add <space separated file/directory paths> # Add files to git local repo
+    git commit -m "Any message that you want to associate with commit." <Mention file names or git will commit all modified files.> # commit changes to local repository
+    git push origin master # push local repository changes to Github repository
+    git rm -r <file/dir> # Remove file/dir from git local repo
+    git rm --cached <file> # But if you want to remove the file only from the Git repository and not remove it from the file system in use
 
     git fetch
     git merge
     git pull
     git pull --rebase # git config --global branch.autosetuprebase always
-
 
 ###############################################################################
