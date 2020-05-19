@@ -1,4 +1,6 @@
->> crontab -e # Add below details
+# Open crontab to edit
+crontab -e
+# Add below details
 # * * * * * command to be executed
 # - - - - -
 # | | | | |
@@ -8,5 +10,5 @@
 # | ----------- Hour (0 - 23)
 # ------------- Minute (0 - 59)ind to be executed
 #
-MAILTO="sanchayk@xilinx.com"
-30 * * * * /home/sanchayk/.cron.csh
+MAILTO="sanchay.2k9@gmail.com"
+30 * * * * ~/.cron.csh
