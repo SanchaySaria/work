@@ -1,20 +1,19 @@
 git - Distributed Version Control System.
 ###############################################################################
 Know your git version.
-    $ git --version
+    git --version
 
 Git commands to know.
-    $ git status -s[status in short form]
-    $ git add <file/dir path>
-    $ git rm -r <file/dir path>
-    $ git commit -m <"Comment on commit">
-    $ git push origin master
+    git status -s[status in short form]
+    git add <file/dir path>
+    git rm -r <file/dir path>
+    git commit -m <"Comment on commit">
+    git push origin master
 
-    $ git fetch
-    $ git merge
-    $ git pull
-    $ git pull --rebase # git config --global branch.autosetuprebase always
-
+    git fetch
+    git merge
+    git pull
+    git pull --rebase # git config --global branch.autosetuprebase always
 
 
 ###############################################################################
