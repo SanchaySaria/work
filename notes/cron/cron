@@ -11,4 +11,4 @@ crontab -e
 # ------------- Minute (0 - 59)
 #
 MAILTO="sanchay.2k9@gmail.com"
-30 * * * * ~/.cron.csh
+30 * * * * ~/.cron/cron.csh
