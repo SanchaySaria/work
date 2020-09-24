@@ -1,1 +1,4 @@
-
+alias h 'history'
+alias v gvim -p
+alias c clear
+alias so source
